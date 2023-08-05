@@ -1,0 +1,25 @@
+{
+  "name": "proxyserver",
+  "version": "1.0.0",
+  "description": "This microservice handles authorization for the application, also it is the interface receiving client requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "typescript",
+    "javascript",
+    "node",
+    "microservice"
+  ],
+  "author": "Ajayi Chibueze Adeyemi",
+  "contributors": [
+    ""
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "typescript": "^5.1.6"
+  }
+}
