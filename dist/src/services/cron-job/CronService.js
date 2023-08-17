@@ -9,7 +9,7 @@ class CronService {
         this.systemLogger = () => {
             cron.schedule(_1.TIME.ONE_MINUTE, () => {
                 const time = (new Date().toISOString());
-                (0, helper_1.info)("System Logging: ", `[${time}]`);
+                (0, helper_1.info)("System Logging:", `${time}`);
             });
         };
     }
