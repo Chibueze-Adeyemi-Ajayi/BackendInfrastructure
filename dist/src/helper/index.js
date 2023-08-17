@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.info = exports.error = exports.warn = exports.log = void 0;
+exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.serviceLog = exports.info = exports.error = exports.warn = exports.log = void 0;
 const exports_1 = require("../config/exports");
 function log(...msg) {
     console.log(...msg);
@@ -18,6 +18,11 @@ function info(...msg) {
     console.info(...msg);
 }
 exports.info = info;
+function serviceLog(...args) {
+    const timestamp = new Date().getMilliseconds();
+    console.log(`[ Call: ${[...args]} ] @`, timestamp);
+}
+exports.serviceLog = serviceLog;
 function sendRespnse(msg, code = 200) {
     return {
         code: code,
@@ -32,5 +37,5 @@ function sendErr(msg, code = 400) {
     };
 }
 exports.sendErr = sendErr;
-const pathFormat = (path) => `${exports_1.BASE_URL}/path`;
+const pathFormat = (path) => `${exports_1.BASE_URL}${path}`;
 exports.pathFormat = pathFormat;

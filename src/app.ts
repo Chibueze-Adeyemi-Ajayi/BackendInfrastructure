@@ -1,8 +1,9 @@
 import { AuthRouter } from "./auth";
-import { BASE_URL } from "./config/exports";
+import { pathFormat } from "./helper";
 
 export class Application {
     public mountRoutes = (express:any) => {
-        express.use(`${BASE_URL}/auth`, AuthRouter) // auth router
+        express.get(pathFormat("/"), (req:any, res:any) => { req; res.send("Welcome to Future Academy Africa"); })
+        express.use(pathFormat("/auth"), AuthRouter) // auth router
     }
 }

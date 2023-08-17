@@ -17,7 +17,7 @@ class AuthController {
         this._authService = new AuthService_1.AuthService();
         this.signup = (req, res) => __awaiter(this, void 0, void 0, function* () {
             let data = req.body;
-            return (0, helper_1.sendRespnse)(yield this._authService.signup(data));
+            res.json((0, helper_1.sendRespnse)(yield this._authService.signup(data)));
         });
     }
 }

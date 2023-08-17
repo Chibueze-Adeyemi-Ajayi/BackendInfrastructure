@@ -10,9 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
+const helper_1 = require("../helper");
 class AuthService {
     constructor() {
         this.signup = (data) => __awaiter(this, void 0, void 0, function* () {
+            (0, helper_1.serviceLog)("Signup Service");
             return "Jilo -Billionaire";
         });
     }
