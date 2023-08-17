@@ -21,13 +21,16 @@ class AuthService {
         this.signup = (data) => __awaiter(this, void 0, void 0, function* () {
             (0, helper_1.serviceLog)("Signup");
             const webhook_key = exports_1.WEBTOKEN;
-            let payload = { webhook_key, data };
+            const unique_code = new Date().getTime();
+            let payload = { webhook_key, data, unique_code };
             payload = JSON.stringify(payload);
             const enc_key = this._cryptoService.encrypt(payload), signature = this._cryptoService.getSignature(enc_key);
+            (0, helper_1.serviceLog)("Cryptography");
             let body = {
                 method: webhook_1.HOOK_REQUEST_METHOD.POST,
                 url: "/signup",
-                body: payload,
+                body: enc_key,
+                params: "mmmmm",
                 type: webhook_1.HOOK_REQUEST_TYPE.SIGNUP,
                 headers: {
                     "Content-Type": "application/json",
@@ -35,6 +38,7 @@ class AuthService {
                     "Signature": signature
                 }
             };
+            (0, helper_1.log)({ body });
             const res = yield this._webhookService.sendRequest(body);
             return "Jilo -Billionaire" + res;
         });

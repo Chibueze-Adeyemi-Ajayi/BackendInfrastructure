@@ -8,13 +8,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebHookService = void 0;
+const axios_1 = __importDefault(require("axios"));
+const _1 = require(".");
 const helper_1 = require("../../helper");
 class WebHookService {
     constructor() {
+        this._hookResponse = (msg, code = 200) => {
+        };
         this.sendRequest = (data) => __awaiter(this, void 0, void 0, function* () {
-            (0, helper_1.serviceLog)("Webhook");
+            try {
+                (0, helper_1.serviceLog)("Webhook");
+                let url = data.url + (("/" + data.params) || ""), payload = data.body || data.query;
+                (0, helper_1.log)({ url, payload });
+                if (data.method == _1.HOOK_REQUEST_METHOD.POST) {
+                    const response = yield axios_1.default.post(url, payload);
+                    return response;
+                }
+            }
+            catch (e) {
+                return this._hookResponse(e, 400);
+            }
         });
     }
 }

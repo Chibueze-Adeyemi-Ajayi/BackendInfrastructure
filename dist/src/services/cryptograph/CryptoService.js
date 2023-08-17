@@ -44,7 +44,6 @@ class CryptoService {
             const isSignatureValid = verifier.verify(publicKey, signature, 'base64');
             return isSignatureValid;
         };
-        (0, helper_1.serviceLog)("Cryptography");
     }
 }
 exports.CryptoService = CryptoService;

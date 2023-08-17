@@ -1,12 +1,10 @@
 import crypto from 'crypto';
-import { formatRSAKey, serviceLog } from '../../helper';
+import { formatRSAKey } from '../../helper';
 import { PRIVATE_KEY, PUBLIC_KEY } from '../../config/exports';
 export class CryptoService {
 
     private pbk = formatRSAKey(PUBLIC_KEY); 
     private pvk = formatRSAKey(PRIVATE_KEY);
-
-    constructor () { serviceLog("Cryptography") }
 
     public generatePairkey = (length = 4096) => {
         return crypto.generateKeyPairSync('rsa', {
@@ -45,5 +43,5 @@ export class CryptoService {
         const isSignatureValid = verifier.verify(publicKey, signature, 'base64');
         return isSignatureValid
     }
-    
+
 }

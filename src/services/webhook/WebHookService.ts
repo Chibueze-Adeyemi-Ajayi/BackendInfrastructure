@@ -1,8 +1,21 @@
-import { IWebHookRequest } from ".";
-import { serviceLog } from "../../helper";
+import axios from "axios";
+import { HOOK_REQUEST_METHOD, IWebHookRequest } from ".";
+import { log, serviceLog } from "../../helper";
 
 export class WebHookService {
+    private _hookResponse = (msg:any, code = 200) => {
+
+    }
     public sendRequest = async (data:IWebHookRequest) => {
-        serviceLog("Webhook")
+      try {
+        serviceLog("Webhook"); 
+        let url = data.url + (("/" + data.params) || ""),
+            payload = data.body || data.query; log({url, payload})
+        if (data.method == HOOK_REQUEST_METHOD.POST) {
+            const response = await axios.post(url, payload);
+            return response
+        }
+      } catch (e:any) { return this._hookResponse(e, 400); }
+        
     }
 }
