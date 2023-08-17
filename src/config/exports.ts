@@ -2,4 +2,4 @@
 require('dotenv').config();
 
 // exporting the enviromental variables
-export const LOCAL_PORT = process.env.LOCAL_PORT ||  "";
+export const PORT = process.env.PORT ||  ""; 
