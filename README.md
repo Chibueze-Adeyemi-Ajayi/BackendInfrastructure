@@ -35,7 +35,7 @@ To use the proxy server application, follow these steps:
 
 ## Installation
 
-1. Clone this repository: `git clone [https://github.com/yourusername/proxy-server.git](https://github.com/Chibueze-Adeyemi-Ajayi/ProxyServer/)`
+1. Clone this repository: `git clone [https://github.com/Chibueze-Adeyemi-Ajayi/ProxyServer/]`
 2. Navigate to the project directory: `cd proxy-server`
 3. Install dependencies: `npm install`
 
