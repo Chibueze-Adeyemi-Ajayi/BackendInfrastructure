@@ -28,9 +28,8 @@ class AuthService {
             (0, helper_1.serviceLog)("Cryptography");
             let body = {
                 method: webhook_1.HOOK_REQUEST_METHOD.POST,
-                url: "/signup",
+                url: webhook_1.SERVER_URL.APPLICATION + "/signup",
                 body: enc_key,
-                params: "mmmmm",
                 type: webhook_1.HOOK_REQUEST_TYPE.SIGNUP,
                 headers: {
                     "Content-Type": "application/json",

@@ -27,5 +27,6 @@ export interface IWebHookRequest {
 }
 
 export const SERVER_URL = {
-    PROXY:BASE_URL
+    PROXY:BASE_URL,
+    APPLICATION: "/f2a/application-server/v1"
 }

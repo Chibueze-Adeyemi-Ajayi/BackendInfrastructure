@@ -2,7 +2,7 @@ import { Isignup } from ".";
 import { WEBTOKEN } from "../config/exports";
 import { log, serviceLog } from "../helper";
 import { CryptoService } from "../services/cryptograph/CryptoService";
-import { HOOK_REQUEST_METHOD, HOOK_REQUEST_TYPE, IWebHookRequest, WebHookService } from "../services/webhook";
+import { HOOK_REQUEST_METHOD, HOOK_REQUEST_TYPE, IWebHookRequest, SERVER_URL, WebHookService } from "../services/webhook";
 
 export class AuthService {
     private _webhookService = new WebHookService();
@@ -23,9 +23,8 @@ export class AuthService {
 
         let body : IWebHookRequest = {
             method: HOOK_REQUEST_METHOD.POST,
-            url: "/signup",
+            url: SERVER_URL.APPLICATION + "/signup",
             body: enc_key,
-            params:"mmmmm",
             type: HOOK_REQUEST_TYPE.SIGNUP,
             headers: {
                 "Content-Type": "application/json",

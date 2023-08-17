@@ -19,5 +19,6 @@ var HOOK_REQUEST_METHOD;
     HOOK_REQUEST_METHOD["DELETE"] = "delete";
 })(HOOK_REQUEST_METHOD || (exports.HOOK_REQUEST_METHOD = HOOK_REQUEST_METHOD = {}));
 exports.SERVER_URL = {
-    PROXY: exports_1.BASE_URL
+    PROXY: exports_1.BASE_URL,
+    APPLICATION: "/f2a/application-server/v1"
 };

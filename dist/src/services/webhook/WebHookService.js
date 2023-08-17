@@ -23,7 +23,7 @@ class WebHookService {
         this.sendRequest = (data) => __awaiter(this, void 0, void 0, function* () {
             try {
                 (0, helper_1.serviceLog)("Webhook");
-                let url = data.url + (("/" + data.params) || ""), payload = data.body || data.query;
+                let url = (0, helper_1.getHookURL)() + data.url + (("/" + (data.params || ""))), payload = data.body || data.query;
                 (0, helper_1.log)({ url, payload });
                 if (data.method == _1.HOOK_REQUEST_METHOD.POST) {
                     const response = yield axios_1.default.post(url, payload);
