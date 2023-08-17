@@ -20,7 +20,7 @@ function info(...msg) {
 exports.info = info;
 function serviceLog(...args) {
     const timestamp = new Date().getTime();
-    console.log(`[ ${[...args]} :`, timestamp, "]");
+    console.log(`[ ${[...args]} =>`, timestamp, "]");
 }
 exports.serviceLog = serviceLog;
 function sendRespnse(msg, code = 200) {

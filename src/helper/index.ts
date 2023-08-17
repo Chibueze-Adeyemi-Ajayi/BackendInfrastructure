@@ -18,7 +18,7 @@ export function info(...msg:any[]) {
 
 export function serviceLog (...args:any[]) {
     const timestamp:number = new Date().getTime()
-    console.log(`[ ${[...args]} :`, timestamp, "]");
+    console.log(`[ ${[...args]} =>`, timestamp, "]");
 }
 
 export function sendRespnse (msg:any, code = 200) {
