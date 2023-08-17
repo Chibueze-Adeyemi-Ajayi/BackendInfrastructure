@@ -1,3 +1,5 @@
+import { BASE_URL } from "../config/exports";
+
 export function log(...msg:any[]) {
     console.log(...msg);
 }
@@ -27,3 +29,5 @@ export function sendErr (msg:any, code = 400) {
         msg: msg
     }
 }
+
+export const pathFormat = (path:string) => `${BASE_URL}/path`;

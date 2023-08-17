@@ -17,4 +17,4 @@ application.mountRoutes(app);
 // mounting cron jobs
 const cronController = new cron_job_1.CronController();
 cronController.systemLogger(); // every one minute system logger
-app.listen(port, () => (0, helper_1.info)(`Application listening on:`, port));
+app.listen(port, () => (0, helper_1.info)(`Application listening on:`, { port }, { BASE_URL: exports_1.BASE_URL }));

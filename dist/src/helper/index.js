@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendErr = exports.sendRespnse = exports.info = exports.error = exports.warn = exports.log = void 0;
+exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.info = exports.error = exports.warn = exports.log = void 0;
+const exports_1 = require("../config/exports");
 function log(...msg) {
     console.log(...msg);
 }
@@ -31,3 +32,5 @@ function sendErr(msg, code = 400) {
     };
 }
 exports.sendErr = sendErr;
+const pathFormat = (path) => `${exports_1.BASE_URL}/path`;
+exports.pathFormat = pathFormat;

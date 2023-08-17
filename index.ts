@@ -1,4 +1,4 @@
-import { PORT } from "./src/config/exports";
+import { BASE_URL, PORT } from "./src/config/exports";
 import express from "express";
 import { info } from "./src/helper";
 import { Application } from "./src/app";
@@ -17,4 +17,4 @@ application.mountRoutes(app);
 const cronController = new CronController();
 cronController.systemLogger(); // every one minute system logger
 
-app.listen(port, () => info(`Application listening on:`, port));
+app.listen(port, () => info(`Application listening on:`, {port}, {BASE_URL}));

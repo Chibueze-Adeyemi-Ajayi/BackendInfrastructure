@@ -13,6 +13,7 @@ exports.AuthService = void 0;
 class AuthService {
     constructor() {
         this.signup = (data) => __awaiter(this, void 0, void 0, function* () {
+            return "Jilo -Billionaire";
         });
     }
 }
