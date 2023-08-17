@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WebHookService = exports.WebHookController = exports.HOOK_REQUEST_METHOD = exports.HOOK_REQUEST_TYPE = void 0;
+exports.SERVER_URL = exports.WebHookService = exports.WebHookController = exports.HOOK_REQUEST_METHOD = exports.HOOK_REQUEST_TYPE = void 0;
+const exports_1 = require("../../config/exports");
 const WebHookController_1 = require("./WebHookController");
 Object.defineProperty(exports, "WebHookController", { enumerable: true, get: function () { return WebHookController_1.WebHookController; } });
 const WebHookService_1 = require("./WebHookService");
@@ -17,3 +18,6 @@ var HOOK_REQUEST_METHOD;
     HOOK_REQUEST_METHOD["PUT"] = "put";
     HOOK_REQUEST_METHOD["DELETE"] = "delete";
 })(HOOK_REQUEST_METHOD || (exports.HOOK_REQUEST_METHOD = HOOK_REQUEST_METHOD = {}));
+exports.SERVER_URL = {
+    PROXY: exports_1.BASE_URL
+};

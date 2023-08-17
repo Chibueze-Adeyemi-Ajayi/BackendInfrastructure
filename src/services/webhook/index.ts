@@ -1,3 +1,4 @@
+import { BASE_URL } from "../../config/exports";
 import { WebHookController } from "./WebHookController";
 import { WebHookService } from "./WebHookService";
 
@@ -23,4 +24,8 @@ export interface IWebHookRequest {
     params?: any;
     cookies?: any;
     files?: any;
+}
+
+export const SERVER_URL = {
+    PROXY:BASE_URL
 }
