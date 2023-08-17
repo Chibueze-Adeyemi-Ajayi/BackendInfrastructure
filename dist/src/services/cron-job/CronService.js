@@ -20,8 +20,8 @@ class CronService {
         });
         this.systemLogger = () => {
             this.schedule(_1.TIME.ONE_MINUTE, () => {
-                const time = (new Date().toISOString());
-                (0, helper_1.info)("System Logging:", `${time}`);
+                const time = (new Date());
+                (0, helper_1.info)("System Logging:", `${time.toISOString()}`);
             });
         };
     }

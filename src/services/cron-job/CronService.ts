@@ -9,8 +9,8 @@ export class CronService {
     }
     public systemLogger = () => {
         this.schedule(TIME.ONE_MINUTE, () => {
-            const time = (new Date().toISOString());
-            info("System Logging:", `${time}`);
+            const time:Date = (new Date());
+            info("System Logging:", `${time.toISOString()}`);
         }); 
     }
 }

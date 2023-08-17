@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.serviceLog = exports.info = exports.error = exports.warn = exports.log = void 0;
+exports.formatRSAKey = exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.serviceLog = exports.info = exports.error = exports.warn = exports.log = void 0;
 const exports_1 = require("../config/exports");
 function log(...msg) {
     console.log(...msg);
@@ -19,8 +19,8 @@ function info(...msg) {
 }
 exports.info = info;
 function serviceLog(...args) {
-    const timestamp = new Date().getMilliseconds();
-    console.log(`[ Call: ${[...args]} ] @`, timestamp);
+    const timestamp = new Date().getTime();
+    console.log(`[ ${[...args]} :`, timestamp, "]");
 }
 exports.serviceLog = serviceLog;
 function sendRespnse(msg, code = 200) {
@@ -39,3 +39,8 @@ function sendErr(msg, code = 400) {
 exports.sendErr = sendErr;
 const pathFormat = (path) => `${exports_1.BASE_URL}${path}`;
 exports.pathFormat = pathFormat;
+function formatRSAKey(key) {
+    const formattedRSAKey = key.replace(/\\n/g, '\n').replace(/\\r/g, '\r').replace(/\\t/g, '\t');
+    return formattedRSAKey;
+}
+exports.formatRSAKey = formatRSAKey;

@@ -17,8 +17,8 @@ export function info(...msg:any[]) {
 }
 
 export function serviceLog (...args:any[]) {
-    const timestamp:number = new Date().getMilliseconds();
-    console.log(`[ Call: ${[...args]} ] @`, timestamp);
+    const timestamp:number = new Date().getTime()
+    console.log(`[ ${[...args]} :`, timestamp, "]");
 }
 
 export function sendRespnse (msg:any, code = 200) {
@@ -36,3 +36,8 @@ export function sendErr (msg:any, code = 400) {
 }
 
 export const pathFormat = (path:string) => `${BASE_URL}${path}`;
+
+export function formatRSAKey (key:string) {
+    const formattedRSAKey = key.replace(/\\n/g, '\n').replace(/\\r/g, '\r').replace(/\\t/g, '\t');
+    return formattedRSAKey
+}   
