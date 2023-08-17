@@ -1,3 +1,2 @@
 "use strict";
-console.log("Hello");
-var x = true;
+console.log("Jilo Billionaire");
