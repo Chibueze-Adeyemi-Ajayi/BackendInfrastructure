@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatRSAKey = exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.serviceLog = exports.info = exports.error = exports.warn = exports.log = void 0;
+exports.getHookURL = exports.getDevelopementState = exports.formatRSAKey = exports.pathFormat = exports.sendErr = exports.sendRespnse = exports.serviceLog = exports.info = exports.error = exports.warn = exports.log = void 0;
+const __1 = require("../..");
+const config_1 = require("../config");
 const exports_1 = require("../config/exports");
 function log(...msg) {
     console.log(...msg);
@@ -44,3 +46,15 @@ function formatRSAKey(key) {
     return formattedRSAKey;
 }
 exports.formatRSAKey = formatRSAKey;
+const getDevelopementState = () => __1.config;
+exports.getDevelopementState = getDevelopementState;
+function getHookURL() {
+    let state = (0, exports.getDevelopementState)();
+    if (state == config_1.CONFIGURATION_STATE.DEVELOPMENT)
+        return exports_1.LOCAL_URL;
+    if (state == config_1.CONFIGURATION_STATE.PRE_PRODUCTION)
+        return exports_1.PRE_PROD_URL;
+    if (state == config_1.CONFIGURATION_STATE.PRODUCTION)
+        return exports_1.PRODUCTION_URL;
+}
+exports.getHookURL = getHookURL;

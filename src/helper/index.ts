@@ -1,4 +1,6 @@
-import { BASE_URL } from "../config/exports";
+import { config } from "../..";
+import { CONFIGURATION_STATE } from "../config";
+import { BASE_URL, LOCAL_URL, PRE_PROD_URL, PRODUCTION_URL } from "../config/exports";
 
 export function log(...msg:any[]) {
     console.log(...msg);
@@ -41,3 +43,12 @@ export function formatRSAKey (key:string) {
     const formattedRSAKey = key.replace(/\\n/g, '\n').replace(/\\r/g, '\r').replace(/\\t/g, '\t');
     return formattedRSAKey
 }   
+
+export const getDevelopementState = () => config;
+
+export function getHookURL () {
+    let state = getDevelopementState();
+    if (state == CONFIGURATION_STATE.DEVELOPMENT) return LOCAL_URL;
+    if (state == CONFIGURATION_STATE.PRE_PRODUCTION) return PRE_PROD_URL;
+    if (state == CONFIGURATION_STATE.PRODUCTION) return PRODUCTION_URL;
+}
