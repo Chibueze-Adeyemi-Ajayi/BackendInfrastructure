@@ -11,11 +11,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const helper_1 = require("../helper");
+const webhook_1 = require("../services/webhook");
 class AuthService {
     constructor() {
+        this._webhookService = new webhook_1.WebHookService();
         this.signup = (data) => __awaiter(this, void 0, void 0, function* () {
-            (0, helper_1.serviceLog)("Signup Service");
-            return "Jilo -Billionaire";
+            (0, helper_1.serviceLog)("Signup");
+            let body = {
+                method: webhook_1.HOOK_REQUEST_METHOD.POST,
+                url: "/signup",
+                body: data,
+                type: webhook_1.HOOK_REQUEST_TYPE.SIGNUP,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Signature": "my signature"
+                }
+            };
+            const res = yield this._webhookService.sendRequest(body);
+            return "Jilo -Billionaire" + res;
         });
     }
 }
