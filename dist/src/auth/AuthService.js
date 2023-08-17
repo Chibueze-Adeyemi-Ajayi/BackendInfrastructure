@@ -10,22 +10,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
+const exports_1 = require("../config/exports");
 const helper_1 = require("../helper");
+const CryptoService_1 = require("../services/cryptograph/CryptoService");
 const webhook_1 = require("../services/webhook");
 class AuthService {
     constructor() {
         this._webhookService = new webhook_1.WebHookService();
+        this._cryptoService = new CryptoService_1.CryptoService();
         this.signup = (data) => __awaiter(this, void 0, void 0, function* () {
             (0, helper_1.serviceLog)("Signup");
+            const webhook_key = exports_1.WEBTOKEN;
+            let payload = { webhook_key, data };
+            payload = JSON.stringify(payload);
+            const enc_key = this._cryptoService.encrypt(payload), signature = this._cryptoService.getSignature(enc_key);
             let body = {
                 method: webhook_1.HOOK_REQUEST_METHOD.POST,
                 url: "/signup",
-                body: data,
+                body: payload,
                 type: webhook_1.HOOK_REQUEST_TYPE.SIGNUP,
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "Signature": "my signature"
+                    "Signature": signature
                 }
             };
             const res = yield this._webhookService.sendRequest(body);
