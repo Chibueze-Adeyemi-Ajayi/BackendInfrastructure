@@ -4,8 +4,11 @@ import { info } from "../../helper";
 const cron = require("node-cron");
 
 export class CronService {
+    private schedule = async (time:string, callback:Function) => {
+        cron.schedule(time, callback);
+    }
     public systemLogger = () => {
-        cron.schedule(TIME.ONE_MINUTE, () => {
+        this.schedule(TIME.ONE_MINUTE, () => {
             const time = (new Date().toISOString());
             info("System Logging:", `${time}`);
         }); 

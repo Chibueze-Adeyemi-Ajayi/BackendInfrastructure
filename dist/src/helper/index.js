@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.info = exports.error = exports.warn = exports.log = void 0;
+exports.sendErr = exports.sendRespnse = exports.info = exports.error = exports.warn = exports.log = void 0;
 function log(...msg) {
     console.log(...msg);
 }
@@ -17,3 +17,17 @@ function info(...msg) {
     console.info(...msg);
 }
 exports.info = info;
+function sendRespnse(msg, code = 200) {
+    return {
+        code: code,
+        msg: msg
+    };
+}
+exports.sendRespnse = sendRespnse;
+function sendErr(msg, code = 400) {
+    return {
+        code: code,
+        msg: msg
+    };
+}
+exports.sendErr = sendErr;

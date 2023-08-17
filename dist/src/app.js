@@ -5,7 +5,7 @@ const auth_1 = require("./auth");
 class Application {
     constructor() {
         this.mountRoutes = (express) => {
-            express.use("/auth", auth_1.AuthRouter);
+            express.use("/auth", auth_1.AuthRouter); // auth router
         };
     }
 }
